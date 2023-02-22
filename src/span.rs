@@ -207,6 +207,13 @@ impl PartialEq<Span> for &Span {
     }
 }
 
+use std::ops::Range as StdRange;
+impl From<StdRange<usize>> for Span {
+    fn from(range: StdRange<usize>) -> Self {
+        Self::new(range.start, range.end)
+    }
+}
+
 mod sealed {
     pub trait Sealed {}
 
